@@ -28,5 +28,6 @@ El sistema de gestión de inmuebles está desarrollado utilizando los siguientes
 
 ## Miembros
 - Martin Elias Zalazar
+- David Walter Vargas
 - Agreguen sus nombres chicos....
 
