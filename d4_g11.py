@@ -33,6 +33,25 @@ def mostrar_menu():
 def agregar_inmueble(lista):
     os.system('cls')
     print("=== Agregar Inmueble ===")
+    indice = int(input(f"Ingrese el índice del inmueble a agregar mayor o igual a {len(lista)}: "))
+    if indice >= len(lista):
+        
+        inmueble_agregado = {}
+        inmueble_agregado['año'] = int(input("Ingrese año de construccion: "))
+        inmueble_agregado['metros'] = int(input("Ingrese cantidad de Metros cuadrados: "))
+        inmueble_agregado['habitaciones'] = int(input("Ingrese Número de habitaciones: "))
+        inmueble_agregado['garaje'] = input("¿Tiene garaje? (S/N): ").upper() == 'S'
+        inmueble_agregado['zona'] = input("Zona (A, B o C): ").upper()
+        inmueble_agregado['estado'] = input("Estado (Disponible, Reservado o Vendido): ").capitalize()
+        
+        if validar_inmueble(inmueble_agregado):
+            lista[indice].append(inmueble_agregado)  
+            print("Inmueble agregado con éxito.")
+        else:
+            print("Error al agregar el inmueble. Verifica los datos ingresados.")
+    else:
+        print("Índice inválido. No se encontró el inmueble.")
+
 
 def editar_inmueble(lista):
     os.system('cls')
@@ -48,8 +67,7 @@ def editar_inmueble(lista):
         inmueble_nuevo['garaje'] = input(
             "¿Tiene garaje? (S/N): ").upper() == 'S'
         inmueble_nuevo['zona'] = input("Zona (A, B o C): ").upper()
-        inmueble_nuevo['estado'] = input(
-            "Estado (Disponible, Reservado o Vendido): ").capitalize()
+        inmueble_nuevo['estado'] = input("Estado (Disponible, Reservado o Vendido): ").capitalize()
         if validar_inmueble(inmueble_nuevo):
             lista[indice].update(inmueble_nuevo)  # Actualiza el inmueble en la lista con los nuevos datos
             print("Inmueble editado con éxito.")
@@ -62,6 +80,10 @@ def editar_inmueble(lista):
 def eliminar_inmueble(lista):
     os.system('cls')
     print("=== Eliminar Inmueble ===")
+
+    eliminado = int(input("Ingrese el índice del inmueble a eliminar: "))  
+    
+    print (f"se elimino con exito el inmueble {lista.pop(eliminado)}")
 
 
 def cambiar_estado_inmueble(lista):
