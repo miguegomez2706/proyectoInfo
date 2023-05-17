@@ -34,7 +34,6 @@ def agregar_inmueble(lista):
     os.system('cls')
     print("=== Agregar Inmueble ===")
 
-# Funcion para editar el inmuble seleccionando un indice.
 def editar_inmueble(lista):
     os.system('cls')
     mostrar_inmuebles(lista)
@@ -52,7 +51,7 @@ def editar_inmueble(lista):
         inmueble_nuevo['estado'] = input(
             "Estado (Disponible, Reservado o Vendido): ").capitalize()
         if validar_inmueble(inmueble_nuevo):
-            lista[indice] = calcular_precio_inmueble(inmueble_nuevo)
+            lista[indice].update(inmueble_nuevo)  # Actualiza el inmueble en la lista con los nuevos datos
             print("Inmueble editado con éxito.")
         else:
             print("Error al editar el inmueble. Verifica los datos ingresados.")
