@@ -78,8 +78,8 @@ def editar_inmueble(lista):
 
 
 def eliminar_inmueble(lista):
-   os.system('cls')
-   print("=== Eliminar Inmueble ===")
+    os.system('cls')
+    print("=== Eliminar Inmueble ===")
 
     indice = int(input("Ingrese el índice del inmueble a eliminar: "))
     if indice >= 0 and indice < len(lista):
@@ -100,6 +100,16 @@ def cambiar_estado_inmueble(lista):
     os.system('cls')
     print("=== Cambiar Estado de Inmueble ===")
 
+    mostrar_inmuebles(lista)
+    indice = int(input("Ingrese el índice del inmueble a cambiar el estado: "))
+    if indice >= 0 and indice < len(lista):
+        inmueble = lista[indice]
+        print(f"Inmueble seleccionado: {inmueble}")
+        nuevo_estado = input("Ingrese el nuevo estado del inmueble: ")
+        inmueble['estado'] = nuevo_estado.capitalize()
+        print("Estado cambiado con éxito.")
+    else:
+        print("Índice inválido. No se encontró el inmueble.")
 
 def buscar_inmuebles(lista):
     os.system('cls')
