@@ -33,25 +33,31 @@ def mostrar_menu():
 def agregar_inmueble(lista):
     os.system('cls')
     print("=== Agregar Inmueble ===")
-    indice = int(input(f"Ingrese el índice del inmueble a agregar mayor o igual a {len(lista)}: "))
+    indice = int(input(
+        f"Ingrese el índice del inmueble a agregar mayor o igual a {len(lista)}: "))
     if indice >= len(lista):
-        
+
         inmueble_agregado = {}
         inmueble_agregado['año'] = int(input("Ingrese año de construccion: "))
-        inmueble_agregado['metros'] = int(input("Ingrese cantidad de Metros cuadrados: "))
-        inmueble_agregado['habitaciones'] = int(input("Ingrese Número de habitaciones: "))
-        inmueble_agregado['garaje'] = input("¿Tiene garaje? (S/N): ").upper() == 'S'
+        inmueble_agregado['metros'] = int(
+            input("Ingrese cantidad de Metros cuadrados: "))
+        inmueble_agregado['habitaciones'] = int(
+            input("Ingrese Número de habitaciones: "))
+        inmueble_agregado['garaje'] = input(
+            "¿Tiene garaje? (S/N): ").upper() == 'S'
         inmueble_agregado['zona'] = input("Zona (A, B o C): ").upper()
-        inmueble_agregado['estado'] = input("Estado (Disponible, Reservado o Vendido): ").capitalize()
-        
+        inmueble_agregado['estado'] = input(
+            "Estado (Disponible, Reservado o Vendido): ").capitalize()
+
         if validar_inmueble(inmueble_agregado):
-            lista.append(inmueble_agregado)  
+            lista.append(inmueble_agregado)
             print("Inmueble agregado con éxito.")
         else:
             print("Error al agregar el inmueble. Verifica los datos ingresados.")
     else:
         print("Índice inválido. No se encontró el inmueble.")
     return lista
+
 
 def editar_inmueble(lista):
     os.system('cls')
@@ -67,9 +73,11 @@ def editar_inmueble(lista):
         inmueble_nuevo['garaje'] = input(
             "¿Tiene garaje? (S/N): ").upper() == 'S'
         inmueble_nuevo['zona'] = input("Zona (A, B o C): ").upper()
-        inmueble_nuevo['estado'] = input("Estado (Disponible, Reservado o Vendido): ").capitalize()
+        inmueble_nuevo['estado'] = input(
+            "Estado (Disponible, Reservado o Vendido): ").capitalize()
         if validar_inmueble(inmueble_nuevo):
-            lista[indice].update(inmueble_nuevo)  # Actualiza el inmueble en la lista con los nuevos datos
+            # Actualiza el inmueble en la lista con los nuevos datos
+            lista[indice].update(inmueble_nuevo)
             print("Inmueble editado con éxito.")
         else:
             print("Error al editar el inmueble. Verifica los datos ingresados.")
@@ -111,10 +119,10 @@ def cambiar_estado_inmueble(lista):
     else:
         print("Índice inválido. No se encontró el inmueble.")
 
+
 def buscar_inmuebles(lista):
     os.system('cls')
     print("=== Buscar Inmuebles por Presupuesto ===")
-
 
 
 #  Muestra la lista de inmuebles y sus índices.
@@ -132,6 +140,8 @@ def mostrar_inmuebles(lista):
         print("==========================")
 
 # Verifica si un inmueble cumple con las reglas de validación
+
+
 def validar_inmueble(inmueble):
     if inmueble['zona'] not in ['A', 'B', 'C']:
         return False

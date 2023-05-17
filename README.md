@@ -30,5 +30,5 @@ El sistema de gestión de inmuebles está desarrollado utilizando los siguientes
 - Martin Elias Zalazar
 - David Walter Vargas
 - Lucas Brito Lima
-- Agreguen sus nombres chicos....
+- Mauro Erlan
 
