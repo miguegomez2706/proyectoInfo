@@ -78,12 +78,22 @@ def editar_inmueble(lista):
 
 
 def eliminar_inmueble(lista):
-    os.system('cls')
-    print("=== Eliminar Inmueble ===")
+   os.system('cls')
+   print("=== Eliminar Inmueble ===")
 
-    eliminado = int(input("Ingrese el índice del inmueble a eliminar: "))  
-    
-    print (f"se elimino con exito el inmueble {lista.pop(eliminado)}")
+    indice = int(input("Ingrese el índice del inmueble a eliminar: "))
+    if indice >= 0 and indice < len(lista):
+        mensaje = f"¿Seguro que desea BORRAR el inmueble con índice {indice}? (S/N): "
+        respuesta = input(mensaje)
+        if respuesta.upper() == "S":
+            inmueble_eliminado = lista.pop(indice)
+            print(f"Se eliminó con éxito el inmueble: {inmueble_eliminado}")
+        else:
+            print("No se realizó ninguna acción.")
+    else:
+        print("Índice inválido. No se encontró el inmueble.")
+
+    return lista
 
 
 def cambiar_estado_inmueble(lista):
