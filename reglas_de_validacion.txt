@@ -1,0 +1,8 @@
+Reglas de validación
+ Inmuebles solo de zona: A, B o C.
+ Inmuebles con estado: Disponible, Reservado o Vendido.
+ 
+ No opera con inmuebles:
+    Anteriores al año 2000.
+    Menores de 60 metros cuadrados.
+    Menores de 2 habitaciones.
