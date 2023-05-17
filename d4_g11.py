@@ -45,13 +45,13 @@ def agregar_inmueble(lista):
         inmueble_agregado['estado'] = input("Estado (Disponible, Reservado o Vendido): ").capitalize()
         
         if validar_inmueble(inmueble_agregado):
-            lista[indice].append(inmueble_agregado)  
+            lista.append(inmueble_agregado)  
             print("Inmueble agregado con éxito.")
         else:
             print("Error al agregar el inmueble. Verifica los datos ingresados.")
     else:
         print("Índice inválido. No se encontró el inmueble.")
-
+    return lista
 
 def editar_inmueble(lista):
     os.system('cls')
