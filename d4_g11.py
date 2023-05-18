@@ -2,8 +2,6 @@
 
 # Usamos el modulo del sistema para borrar la consola luego de cada interaccion
 import os
-
-
 # Creamos una lista de inmuebles (ejemplo)
 lista_inmuebles = [
     {'año': 2010, 'metros': 150, 'habitaciones': 4,
@@ -27,7 +25,8 @@ def mostrar_menu():
     print("\t4. Cambiar estado de inmueble")
     print("\t5. Buscar inmuebles por presupuesto")
     print("\t6. Ver inmuebles")
-    print("\t7. Salir\n")
+    print("\t7. Buscar inmuebles con un presupuesto")
+    print("\t8. Salir\n")
 
 
 def agregar_inmueble(lista):
@@ -57,7 +56,6 @@ def agregar_inmueble(lista):
     else:
         print("Índice inválido. No se encontró el inmueble.")
     return lista
-
 
 def editar_inmueble(lista):
     os.system('cls')
@@ -140,8 +138,6 @@ def mostrar_inmuebles(lista):
         print("==========================")
 
 # Verifica si un inmueble cumple con las reglas de validación
-
-
 def validar_inmueble(inmueble):
     if inmueble['zona'] not in ['A', 'B', 'C']:
         return False
@@ -176,10 +172,25 @@ def calcular_precio_inmueble(inmueble):
 
     return precio
 
+# Buscar Inmuebles
+def buscar_inmuebles(inmuebles, precio_maximo):
+    seleccion = {}
+    todos_los_inmuebles = []
+    año_actual = 2023
+    for inmueble in inmuebles:
+        precioDeInmueble = calcular_precio_inmueble(inmueble)
+        if(precioDeInmueble < precio_maximo):
+            #print(precioDeInmueble)
+            #print("precio maximo: ", precio_maximo)
+            seleccion = inmueble
+            todos_los_inmuebles.append(seleccion)
+            #print("arreglo: ", seleccion)
+    # print(todos_los_inmuebles)
+        mostrar_inmuebles(todos_los_inmuebles)
+  
 
 # Menú principal
 while True:
-
     mostrar_menu()
     opcion = input("Ingrese el número de opción deseada: ")
 
@@ -196,6 +207,9 @@ while True:
     elif opcion == '6':
         mostrar_inmuebles(lista_inmuebles)
     elif opcion == '7':
+        precio_maximo = float(input('Introduce el precio máximo: '))
+        seleccion = buscar_inmuebles(lista_inmuebles, precio_maximo)
+    elif opcion == '8':
         print("Saliendo del programa...")
         break
     else:
@@ -209,3 +223,5 @@ while True:
 # David Walter Vargas
 # Lucas Brito Lima
 # Mauro Erlan
+# Gomez Miguel
+# Fabian Sanchez
