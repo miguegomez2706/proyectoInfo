@@ -33,4 +33,5 @@ El sistema de gestión de inmuebles está desarrollado utilizando los siguientes
 - Mauro Erlan
 - Gomez Miguel
 - Fabian Sanchez
+- Carlos Agustin Custidiano
 
