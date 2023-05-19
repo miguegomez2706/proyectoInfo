@@ -31,4 +31,6 @@ El sistema de gestión de inmuebles está desarrollado utilizando los siguientes
 - David Walter Vargas
 - Lucas Brito Lima
 - Mauro Erlan
+- Gomez Miguel
+- Fabian Sanchez
 

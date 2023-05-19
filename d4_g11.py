@@ -237,3 +237,6 @@ while True:
 # Mauro Erlan
 # Gomez Miguel
 # Fabian Sanchez
+
+# Repositorio
+# https://github.com/miguegomez2706/proyectoInfo
