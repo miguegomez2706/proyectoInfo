@@ -134,15 +134,15 @@ def buscar_inmuebles(inmuebles, precio_maximo):
     os.system('cls')
     print("=== Buscar Inmuebles por Presupuesto ===")
     inmuebles_encontrados = []
-    
+
     for inmueble in inmuebles:
         precio_inmueble = calcular_precio_inmueble(inmueble)
-        
+
         if precio_inmueble <= precio_maximo and inmueble['estado'] in ['Disponible', 'Reservado']:
             inmueble_actualizado = inmueble.copy()
             inmueble_actualizado['precio'] = precio_inmueble
             inmuebles_encontrados.append(inmueble_actualizado)
-    
+
     if len(inmuebles_encontrados) == 0:
         print("No se encontraron inmuebles que cumplan los criterios de búsqueda.")
     else:
@@ -161,6 +161,11 @@ def mostrar_inmuebles(lista):
         print(f"¿Tiene garaje?: {'Sí' if inmueble['garaje'] else 'No'}")
         print(f"Zona: {inmueble['zona']}")
         print(f"Estado: {inmueble['estado']}")
+
+        precio = inmueble.get('precio')
+        if precio is not None:
+            print(f"Precio: {precio}")
+
         print("==========================")
 
 # Verifica si un inmueble cumple con las reglas de validación
