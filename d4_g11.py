@@ -16,6 +16,8 @@ lista_inmuebles = [
         'garaje': False, 'zona': 'C', 'estado': 'Disponible'}
 ]
 
+# Funcion para generar el menu
+
 
 def mostrar_menu():
     print("=== Menú de la Inmobiliaria ===\n")
@@ -27,6 +29,8 @@ def mostrar_menu():
     print("\t6. Ver inmuebles")
     print("\t7. Buscar inmuebles con un presupuesto")
     print("\t8. Salir\n")
+
+# Funcion para agregar un inmueble
 
 
 def agregar_inmueble(lista):
@@ -57,6 +61,9 @@ def agregar_inmueble(lista):
         print("Índice inválido. No se encontró el inmueble.")
     return lista
 
+# Funcion para editar un inmueble
+
+
 def editar_inmueble(lista):
     os.system('cls')
     mostrar_inmuebles(lista)
@@ -82,6 +89,8 @@ def editar_inmueble(lista):
     else:
         print("Índice inválido. No se encontró el inmueble.")
 
+# Funcion para eliminar el inmueble
+
 
 def eliminar_inmueble(lista):
     os.system('cls')
@@ -101,6 +110,8 @@ def eliminar_inmueble(lista):
 
     return lista
 
+# Funcion para cambiar el estado de un inmueble
+
 
 def cambiar_estado_inmueble(lista):
     os.system('cls')
@@ -117,10 +128,26 @@ def cambiar_estado_inmueble(lista):
     else:
         print("Índice inválido. No se encontró el inmueble.")
 
-
-def buscar_inmuebles(lista):
+# Funcion para buscar inmuebles por presupuesto
+def buscar_inmuebles(inmuebles, precio_maximo):
     os.system('cls')
     print("=== Buscar Inmuebles por Presupuesto ===")
+    inmuebles_encontrados = []
+    
+    for inmueble in inmuebles:
+        precio_inmueble = calcular_precio_inmueble(inmueble)
+        
+        if precio_inmueble <= precio_maximo and inmueble['estado'] in ['Disponible', 'Reservado']:
+            inmueble_actualizado = inmueble.copy()
+            inmueble_actualizado['precio'] = precio_inmueble
+            inmuebles_encontrados.append(inmueble_actualizado)
+    
+    if len(inmuebles_encontrados) == 0:
+        print("No se encontraron inmuebles que cumplan los criterios de búsqueda.")
+    else:
+        mostrar_inmuebles(inmuebles_encontrados)
+    
+
 
 
 #  Muestra la lista de inmuebles y sus índices.
@@ -138,6 +165,8 @@ def mostrar_inmuebles(lista):
         print("==========================")
 
 # Verifica si un inmueble cumple con las reglas de validación
+
+
 def validar_inmueble(inmueble):
     if inmueble['zona'] not in ['A', 'B', 'C']:
         return False
@@ -173,21 +202,7 @@ def calcular_precio_inmueble(inmueble):
     return precio
 
 # Buscar Inmuebles
-def buscar_inmuebles(inmuebles, precio_maximo):
-    seleccion = {}
-    todos_los_inmuebles = []
-    año_actual = 2023
-    for inmueble in inmuebles:
-        precioDeInmueble = calcular_precio_inmueble(inmueble)
-        if(precioDeInmueble < precio_maximo):
-            #print(precioDeInmueble)
-            #print("precio maximo: ", precio_maximo)
-            seleccion = inmueble
-            todos_los_inmuebles.append(seleccion)
-            #print("arreglo: ", seleccion)
-    # print(todos_los_inmuebles)
-        mostrar_inmuebles(todos_los_inmuebles)
-  
+
 
 # Menú principal
 while True:
@@ -207,14 +222,14 @@ while True:
     elif opcion == '6':
         mostrar_inmuebles(lista_inmuebles)
     elif opcion == '7':
-        precio_maximo = float(input('Introduce el precio máximo: '))
-        seleccion = buscar_inmuebles(lista_inmuebles, precio_maximo)
+        precio_maximo = float(input("Ingrese el precio máximo: "))
+        buscar_inmuebles(lista_inmuebles, precio_maximo)
     elif opcion == '8':
         print("Saliendo del programa...")
         break
     else:
         os.system('cls')
-        print("*** Opción inválida. Por favor, ingrese un número del 1 al 6 ***\n")
+        print("*** Opción inválida. Por favor, ingrese un número del 1 al 6 ***\n\n")
 
 
 # Miembros del grupo 11
