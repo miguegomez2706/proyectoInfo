@@ -27,8 +27,7 @@ def mostrar_menu():
     print("\t4. Cambiar estado de inmueble")
     print("\t5. Buscar inmuebles por presupuesto")
     print("\t6. Ver inmuebles")
-    print("\t7. Buscar inmuebles con un presupuesto")
-    print("\t8. Salir\n")
+    print("\t7. Salir\n")
 
 # Funcion para agregar un inmueble
 
@@ -144,10 +143,7 @@ def buscar_inmuebles(inmuebles, precio_maximo):
             inmueble_actualizado['precio'] = precio_inmueble
             inmuebles_encontrados.append(inmueble_actualizado)
 
-    if len(inmuebles_encontrados) == 0:
-        print("No se encontraron inmuebles que cumplan los criterios de búsqueda.")
-    else:
-        mostrar_inmuebles(inmuebles_encontrados)
+    return inmuebles_encontrados
 
 
 #  Muestra la lista de inmuebles y sus índices.
@@ -162,9 +158,6 @@ def mostrar_inmuebles(lista):
         print(f"¿Tiene garaje?: {'Sí' if inmueble['garaje'] else 'No'}")
         print(f"Zona: {inmueble['zona']}")
         print(f"Estado: {inmueble['estado']}")
-        precio = inmueble.get('precio')
-        if precio is not None:
-            print(f"Precio: {precio}")
         print("==========================")
 
 # Verifica si un inmueble cumple con las reglas de validación
@@ -221,18 +214,16 @@ while True:
     elif opcion == '4':
         cambiar_estado_inmueble(lista_inmuebles)
     elif opcion == '5':
-        buscar_inmuebles(lista_inmuebles)
+        precio_maximo = float(input("Ingrese el precio máximo: "))
+        buscar_inmuebles(lista_inmuebles, precio_maximo)
     elif opcion == '6':
         mostrar_inmuebles(lista_inmuebles)
     elif opcion == '7':
-        precio_maximo = float(input("Ingrese el precio máximo: "))
-        buscar_inmuebles(lista_inmuebles, precio_maximo)
-    elif opcion == '8':
         print("Saliendo del programa...")
         break
     else:
         os.system('cls')
-        print("*** Opción inválida. Por favor, ingrese un número del 1 al 6 ***\n\n")
+        print("*** Opción inválida. Por favor, ingrese un número del 1 al 6 ***\n")
 
 
 # Miembros del grupo 11
